@@ -1,8 +1,6 @@
 # UuidProperties
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/uuid_properties`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Generate UUIDs and find records using them on ActiveRecord models.
 
 ## Installation
 
@@ -22,7 +20,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First, make sure there is a `uuid` attribute on your model and field on the corresponding table.
+
+To add UUID generation and finders to a model, include the `UuidProperties` module:
+
+```ruby
+class User
+  include UuidProperties
+  ...
+end
+```
+
+- Now whenever a record is created, it will have a UUID initialized (using `SecureRandom.uuid`).
+- The presence of `uuid` on records is required to be valid
+- You can also use the `find_by_uuid` and `find_by_uuid!` finders.
 
 ## Development
 
@@ -32,10 +43,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/uuid_properties. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/heroku/uuid_properties. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
